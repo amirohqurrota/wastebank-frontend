@@ -1,0 +1,56 @@
+.footer-container{
+    width: 100vw;
+    color: white;
+}
+
+.footer-left{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.footer-left-brand{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+}
+
+.footer-left-company{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+}
+
+.footer-left-download{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+}
+
+.container-logo{
+    width:2rem;
+    height: 2rem;
+}
+
+#logo-fb{
+    background-image: url('./image/facebook.png');
+    background-repeat: no-repeat;
+    background-origin: content-box;
+}
+#logo-tw{
+    background-image: url('./image/facebook.png');
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    
+}
+#logo-yt{
+    background-image: url('./image/facebook.png');
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    
+}
+#logo-ig{
+    background-image: url('./image/facebook.png');
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    
+}

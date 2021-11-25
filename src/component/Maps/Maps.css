@@ -1,0 +1,5 @@
+.maps-container{
+    height:25rem;
+    margin-bottom: 100px;
+    background-image: url("./google-maps-marker.png") !important;
+}
