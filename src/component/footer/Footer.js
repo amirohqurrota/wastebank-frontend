@@ -4,7 +4,7 @@ import logo from './Free_Sample_By_Wix.jpg'
 
 export default function Footer() {
     return (
-        <div className=' d-flex justify-content-evenly back-color-green footer-container pb-5'>
+        <div className=' d-flex justify-content-evenly back-color-green footer-container '>
             <div className='col-2 footer-left'>
                 <div>
                     <image src={logo} alt="Logo"/> 

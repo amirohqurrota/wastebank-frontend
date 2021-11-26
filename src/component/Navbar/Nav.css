@@ -1,0 +1,19 @@
+.nav-item>a{
+    margin-left: 3rem;
+}
+
+.navbar-link{
+    font-size: larger;
+}
+
+.navbar{
+    font-weight:500;
+    color: white;
+    /* position:fixed;
+    width: 100vw;
+    margin-top:0; */
+}
+
+.nav-link{
+    color: white !important;
+}

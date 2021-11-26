@@ -1,7 +1,7 @@
 import React from 'react'
 import './Nav.css'
 
-export default function Nav() {
+export default function NavAdmin() {
     return (
         <nav class="navbar navbar-expand-lg navbar-light back-color-green">
             <div class="container-fluid">
@@ -15,16 +15,10 @@ export default function Nav() {
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">History</a>
+                    <a class="nav-link" href="#">Input Deposit</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Finance</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link " href='#'>About Us</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link " href='#'>Hi User!</a>
+                    <a class="nav-link" href="#">Recap Data</a>
                     </li>
                 </ul>
                 </div>

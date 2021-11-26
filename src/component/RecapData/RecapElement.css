@@ -1,0 +1,9 @@
+.select-filter{
+    outline: none;
+    border:0px;
+    border-radius: 15px
+}
+
+.recap-element{
+    border-bottom: 1px solid black;
+}

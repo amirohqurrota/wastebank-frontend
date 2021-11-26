@@ -1,0 +1,21 @@
+.recap-container{
+    margin: 7rem;
+}
+
+.input-search{
+    width:30%
+}
+
+.select-filter{
+    outline: none;
+}
+
+.button-recap{
+    border: none;
+    border-radius: 1rem;
+}
+
+.button-recap-filter{
+    border: none;
+    border-radius: 1.3rem;
+}

@@ -9,7 +9,7 @@ import Footer from '../../component/footer/Footer'
 export default function Home() {
     return (
         <>
-            <h1 className="text-uppercase">test</h1>
+            <Nav/>
                 <div className="row container-banner">
                     <div className="col-6">
                         <div className='col-9'>

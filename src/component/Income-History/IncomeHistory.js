@@ -1,5 +1,5 @@
 import React from 'react'
-import HistoryOne from './HistoryOne'
+import HistoryOne from './IncomeHistoryOne'
 import './IncomeHistory.css'
 
 const HistoryList=[

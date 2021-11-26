@@ -1,6 +1,7 @@
 .footer-container{
-    width: 100vw;
+    /* width: 100vw; */
     color: white;
+    margin-top: 8rem;
 }
 
 .footer-left{

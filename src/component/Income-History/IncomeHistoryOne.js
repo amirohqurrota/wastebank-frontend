@@ -1,5 +1,5 @@
 import React from 'react'
-import HistoryDetailOne from './HistoryDetailOne'
+import HistoryDetailOne from './IncomeHistoryDetailOne'
 import useState from 'react-hook-use-state'
 
 export default function HistoryOne(props) {
