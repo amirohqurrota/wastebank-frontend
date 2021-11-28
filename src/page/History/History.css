@@ -9,6 +9,7 @@
 .container-filter{
     height: 15rem;
     border-radius: 1rem;
+    height: fit-content;
 }
 
 .div-input{
@@ -18,6 +19,15 @@
 .input-history{
     border: none;
     -webkit-appearance: none;
+}
+
+.input-history-option{
+    border: none;
+}
+
+.disabled-option{
+    color: grey !important;
+    font-size: smaller;
 }
 
 input:focus, textarea:focus, select:focus{
@@ -30,4 +40,8 @@ input:focus, textarea:focus, select:focus{
     padding-right: 0.4rem;
     padding-left: 0.4rem;
     margin-top: 1.5rem;
+}
+.errorMessage{
+    color: red;
+    font-size: smaller;
 }

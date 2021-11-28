@@ -47,10 +47,12 @@ const listHistoryUser=[
     }
 ]
 
-export default function HistoryDetail() {
+export default function HistoryDetail(props) {
+    const listHistory=props?.data
+    console.log(listHistory)
     return (
         <div className='mt-5'>
-            {listHistoryUser.map((item)=><HistoryDetailOne Date={item.Date} TransactionID={item.TransactionID} Type={item.Type} Desc={item.Desc} Nominal={item.Nominal}/>)}
+            {listHistory.map((item)=><HistoryDetailOne Date={item?.date} TransactionID={item?.id} Type={item?.transaction_type?.name} Desc={item?.desc} Nominal={item?.nominal}/>)}
         </div>
     )
 }

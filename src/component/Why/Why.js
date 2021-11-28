@@ -2,36 +2,37 @@ import React from 'react'
 import WhyOne from './Why-one'
 import './Why.css'
 import Nav from '../Navbar/Nav'
-import '../../materialIcons/repairing-service.png'
+// import '../../materialIcons/repairing-service.png'
+import './image/string-bag-with-food-illustration-eco-net-shopping-bag-with-products-concept-for-zero-waste-plastic-free-vector-removebg-preview.png'
 
 const listWhy=[
     {
-        image: '../../materialIcons/repairing-service.png',
-        title:"Can Be Serious Problems",
-        desc:"bad waste management in a country can cause serious problem"
+        image: './image/string-bag-with-food-illustration-eco-net-shopping-bag-with-products-concept-for-zero-waste-plastic-free-vector-removebg-preview.png',
+        title:"It's Serious Problems",
+        desc:"bad waste management can cause serious problem"
     },
     {
-        image: '../../materialIcons/repairing-service.png',
+        image: './image/string-bag-with-food-illustration-eco-net-shopping-bag-with-products-concept-for-zero-waste-plastic-free-vector-removebg-preview.png',
         title:"Simple Act Matters",
-        desc:"our simple act can make a big impact fot earth if we do this together"
+        desc:"our simple act can make a big impact fot earth"
     },
     {
-        image: '../../materialIcons/repairing-service.png',
+        image: './image/string-bag-with-food-illustration-eco-net-shopping-bag-with-products-concept-for-zero-waste-plastic-free-vector-removebg-preview.png',
         title:"For Next Generation",
-        desc:"whatever we do now, it for our grand grand children and the next gen"
+        desc:"it for our grand children and the next generation"
     },
     {
-        image: '../../materialIcons/repairing-service.png',
+        image: './image/string-bag-with-food-illustration-eco-net-shopping-bag-with-products-concept-for-zero-waste-plastic-free-vector-removebg-preview.png',
         title:"Be Kind for Earth",
         desc:"this can be one of the way we return the favor to the earth"
     },
     {
-        image: '../../materialIcons/repairing-service.png',
+        image: './image/string-bag-with-food-illustration-eco-net-shopping-bag-with-products-concept-for-zero-waste-plastic-free-vector-removebg-preview.png',
         title:"Be Kind for Earth",
         desc:"this can be one of the way we return the favor to the earth"
     },
     {
-        image: '../../materialIcons/repairing-service.png',
+        image: './image/string-bag-with-food-illustration-eco-net-shopping-bag-with-products-concept-for-zero-waste-plastic-free-vector-removebg-preview.png',
         title:"Be Kind for Earth",
         desc:"this can be one of the way we return the favor to the earth"
     }
