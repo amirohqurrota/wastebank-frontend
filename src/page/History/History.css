@@ -45,3 +45,12 @@ input:focus, textarea:focus, select:focus{
     color: red;
     font-size: smaller;
 }
+
+.reset-filter{
+    margin-bottom: -3rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
+.button-none{
+    display: none;
+}

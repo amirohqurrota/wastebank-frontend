@@ -2,3 +2,9 @@
     outline: none;
     border:0px;
 }
+
+.error-id{
+    font-size: smaller;
+    color: red;
+    position: absolute;
+}

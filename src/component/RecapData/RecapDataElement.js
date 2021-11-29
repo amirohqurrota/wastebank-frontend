@@ -10,22 +10,22 @@ export default function RecapDataElement(props) {
                 <tr>
                     <td>User ID</td>
                     <td className='ps-2'>:</td>
-                    <td>{props.item.userID}</td>
+                    <td>{props.item.id_user}</td>
                 </tr>
                 <tr>
                     <td>Transaction ID</td>
                     <td className='ps-2'>:</td>
-                    <td>{props.item.transactionID}</td>
+                    <td>{props.item.id}</td>
                 </tr>
                 <tr>
                     <td>Type</td>
                     <td className='ps-2 pe-2'>:</td>
-                    <td>{props.item.type}</td>
+                    <td>{props.item.transaction_type.name}</td>
                 </tr>
                 <tr>
                     <td>Detail</td>
                     <td className='ps-2 pe-2'>:</td>
-                    <td>{props.item.detail}</td>
+                    <td>{props.item.desc}</td>
                 </tr>
                 <tr>
                     <td>Nominal</td>

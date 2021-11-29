@@ -17,7 +17,15 @@
     padding: 0.5rem;
 }
 
+.none{
+    display: none;
+}
 
+.error{
+    color: red;
+    font-size: smaller;
+    position:absolute;
+}
 .button-input-admin{
     border: none;
     border-radius: 1rem;
