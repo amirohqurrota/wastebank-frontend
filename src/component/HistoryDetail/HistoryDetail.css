@@ -3,20 +3,7 @@
     border-width: thin;
 }
 
-.pop-up-search{
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    position: fixed;
-    border-radius: 1rem;
-    width: 50%;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    justify-self: center;
-    background-color: #709277;
-    color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
-}
+
 .button-close{
     border-radius: 1rem;
     padding-right: 1rem;

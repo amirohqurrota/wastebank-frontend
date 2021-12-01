@@ -10,6 +10,7 @@ import AboutUs from './page/AboutUs/AboutUs';
 import History from './page/History/History';
 import Input from './page/AdminInput/Input';
 import RecapData from './page/AdminRecapData/RecapData';
+import LoginUser from './page/login/loginUser';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         {/* <Route path="/finance" element={<Home />}/> */}
         <Route path="/admin/input" element={<Input />}/>
         <Route path="/admin/recap" element={<RecapData />}/>
+        <Route path="/login" element={<LoginUser />}/>
       </Routes>
     </BrowserRouter>
   );

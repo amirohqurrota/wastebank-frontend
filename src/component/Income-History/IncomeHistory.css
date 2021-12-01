@@ -25,9 +25,14 @@
 
 .containerDetail{
     margin-top: 1rem;
-    width: 150%;
+    width: fit-content;
     background-color: #EBF2EC;
     border-radius: 1rem;
+}
+.collapse-income{
+    position: absolute;
+    margin-top: -2rem;
+    margin-left: 2rem;
 }
 
 .scroll-horizontal{

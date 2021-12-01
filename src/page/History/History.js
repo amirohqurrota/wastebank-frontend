@@ -207,6 +207,17 @@ export default function History() {
     return (
         <div className='d-flex flex-column'>
             <Nav/>
+            {loading?
+                    <div className="pop-up-loading px-3 d-flex flex-column justify-content-center align-items-center">
+                    <Loader type="Circles" color="#314F37" height={80} width={80}/>
+                    <p className="fs-3 fw-light text-capitalize"> please wait...</p>
+                </div> : null}
+            
+            {loadingFilterType||loadingFilterDate?
+                <div className="pop-up-loading px-3 d-flex flex-column justify-content-center align-items-center">
+                <Loader type="Circles" color="#314F37" height={80} width={80}/>
+                <p className="fs-3 fw-light text-capitalize"> filter working...</p>
+            </div> : null}
             {/* <p>{JSON.stringify(dataHistory)}</p> */}
             {/* <p>{JSON.stringify(saldo?.transaction_aggregate?.aggregate?.sum?.nominal)}</p> */}
             <div className='ms-0 back-color-green col-6 d-flex p-5 container-wallet flex-row justify-content-center align-items-center mb-5 shadow'>

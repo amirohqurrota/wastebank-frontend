@@ -24,7 +24,7 @@ query transactionHist {
   }
   `;
 
-const TRANSACTION_HIST_USER=gql`
+const FILTER_ID_USER=gql`
 query transactionHistById ($idUser:Int!) {
     transaction(where: {id_user: {_eq: $idUser}}) {
       id_user
@@ -38,15 +38,34 @@ query transactionHistById ($idUser:Int!) {
     }
   }
   `;
+
+const FILTER_TYPE=gql`
+  query filterByType($idType: Int!) {
+      transaction(where: {id_type: {_eq: $idType}}){
+        nominal
+        date
+        desc
+        transaction_type {
+          name
+        }
+        id
+      }
+      }`
 export default function RecapData() {
     const {loading, error,data: dataHistory}=useQuery(TRANSACTION);
-    const [filterByIdUser, {loading:loadFilter, error:errFilter,data: dataFilteredById}]=useLazyQuery(TRANSACTION_HIST_USER);
+    const [filterByIdUser, {loading:loadFilterId, error:errFilterId,data: dataFilteredById}]=useLazyQuery(FILTER_ID_USER);
+    const [filterByType, {loading:loadFilterType, error:errFilterType,data: dataFilteredByType}]=useLazyQuery(FILTER_TYPE);
     // const [transactionView, setTransactionView]=useState(dataHistory?.transaction)
 
     useEffect(() => {
         setFilteredData(dataFilteredById?.transaction)
     }, [dataFilteredById])
+
+    useEffect(() => {
+        setFilteredData(dataFilteredByType?.transaction)
+    }, [dataFilteredByType])
     const [idUser,setIdUser]=useState("")
+    const [idType,setIdType]=useState()
     const [filterById, setFilterById]=useState(true)
     const [valueFilter, setValueFilter]=useState('filter by id')
     const [filteredData, setFilteredData]=useState()
@@ -77,16 +96,23 @@ export default function RecapData() {
 
         }
         if(valueFilter==='filter by type'){
-            console.log("fghjkl")
+            filterByType({
+                variables:{
+                    idType
+                }
+            })
+            setFilteredData(dataFilteredByType?.transaction)
+            // console.log("id type",filteredData)
         }
         
     }
-    // console.log(dataFilteredById?.transaction)
 
+    const filterReset=()=>{
+        setFilteredData()
+    }
     return (
         <>
             <NavAdmin/>
-            {/* <p>{JSON.stringify(dataFilteredById)}</p> */}
             <div className='d-flex flex-column recap-container'>
                 <div class="input-group mb-3 input-search align-self-end">
                     <input type="text" class="form-control" placeholder="Seacrh By Transaction ID" aria-label="Seacrh By Transaction ID" aria-describedby="button-addon2" />
@@ -100,13 +126,14 @@ export default function RecapData() {
                             <option className='select-filter' value="filter by type">Filter By Type</option>
                         </select>
                         <div className='ms-3 col-4'>
-                            {filterById?<FilterById setID={setIdUser} ID={idUser}/>:<FilterByType  />}
+                            {filterById?<FilterById setID={setIdUser} ID={idUser}/>:<FilterByType idType={idType} setIdType={setIdType} />}
                         </div>
-                        <button className='button-recap-filter ms-3 px-4 back-color-green' onClick={filterSubmit}>filter</button>
+                        <button className='button-recap-filter filter-submit ms-3 px-4 back-color-green' onClick={filterSubmit}>filter</button>
+                        <button className='button-recap-filter reset ms-3 px-4 back-color-green' onClick={filterReset}>reset</button>
                     </div>
                 </div>
                 <div className='mt-5'>
-                    {filteredData?(filteredData?.map(x=><RecapDataElement item={x}/>)):dataHistory?.transaction?.map(x=><RecapDataElement item={x}/>)}
+                    {filteredData?(filteredData?.map((x,index)=><RecapDataElement key={index} item={x}/>)):dataHistory?.transaction?.map(x=><RecapDataElement item={x}/>)}
                     {/* {dataHistory?.transaction?.map(x=><RecapDataElement item={x}/>)} */}
                 </div>
                 
