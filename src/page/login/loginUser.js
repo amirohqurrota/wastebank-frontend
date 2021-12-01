@@ -1,7 +1,10 @@
 import {React,useState, useEffect} from 'react'
 import "./login.css"
 import {gql, useMutation, useQuery,useLazyQuery, useSubscription} from "@apollo/client";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import Loader from "react-loader-spinner";
+import userData from '../../component/userData/userData';
 
 const LOGIN_DATA=gql`
 query MyQuery13($username: String = "", $password: String = "") {
@@ -14,41 +17,54 @@ query MyQuery13($username: String = "", $password: String = "") {
 
 export default function LoginUser() {
     const [getDataLogin, {loading, error, data}]=useLazyQuery(LOGIN_DATA)
-
-    // useEffect(()=>{
-
-    // })
-
-    const emptySearch={
+    const navigate = useNavigate();
+	const dispatch = useDispatch();
+    const emptyLogin={
         username:"",
         password:"",
     }
-
-    const [search, setSearch] = useState(emptySearch)
-    const [errUsername, setErrUsername] = useState()
+    const [login, setLogin] = useState(emptyLogin)
+    const [errLogin, setErrLogin] = useState()
     const handleInput=e=>{
         const name= e.target.name;
         const value=e.target.value;
 
         if (name==="username"){
             if(value.indexOf(' ') >= 0){
-                setErrUsername("username doesn't allow blank character/space")
+                setErrLogin("username doesn't allow blank character/space")
             }else{
-                setErrUsername("")
+                setErrLogin("")
             }
         }
-        setSearch({
-            ...search,
+        setLogin({
+            ...login,
             [name]: value
         })
         
     }
     
+    useEffect(()=>{
+        if(data&&!loading){
+            if(data?.user.length===0){
+                // setErrLogin("incorrect username or password")
+            }else{
+                // setErrLogin("")
+                const UsersData={
+                    userId: data.user[0].id,
+                    lastName: data.user[0].last_name,
+                    firstName:data.user[0].first_name
+                }
+                dispatch(login(UsersData))
+                useNavigate('/')
+            }
+        }
+    },[data,loading]);
+
     const submitLogin=()=>{
         getDataLogin({
             variables:{
-                username:search.username,
-                password:search.password
+                username:login.username,
+                password:login.password
             }
         })
         // console.log(search)
@@ -72,7 +88,7 @@ export default function LoginUser() {
                         <input className="col-12 input py-1 " name="username" onChange={handleInput}></input>
                         <label className="mt-3">Password</label>
                         <input className="col-12 input py-1" name="password" type="password" onChange={handleInput}></input>
-                        {errUsername?<p className='error-validation'>{errUsername}</p>:null}
+                        {errLogin?<p className='error-validation'>{errLogin}</p>:null}
                         <button className="col-12 button py-2 mt-5 back-color-green submit-login" name="" onClick={submitLogin}>Sign In</button>
                         
                     </div>
