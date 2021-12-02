@@ -1,0 +1,65 @@
+.container-image{
+    width:80%
+}
+
+.button-edit-stock{
+    border: none;
+    border-radius:0.8rem;
+    background-color: #314F37;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: white;
+    margin-top: 0.5rem;
+}
+
+.button-edit-stock-add{
+    border: none;
+    padding-bottom: 0.6rem;
+    padding-top: 0.6rem;
+    border-radius:1.5rem;
+    background-color: #314F37;
+    color: white;
+}
+
+.container-stock-one{
+    border-radius:1rem;
+    min-width: fit-content;
+}
+
+.input-waste{
+    border: none;
+    border-radius: 0.3rem;
+    padding: 0.5rem
+
+}
+
+.pop-up-input-waste{
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    border-radius: 1rem;
+    width: 50%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    justify-self: center;
+    background-color: #709277;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+}
+
+.display-none{
+    display: none
+}
+
+.close-button{
+    border: none;
+    border-radius:0.3rem;
+    background-color:none !important;
+}
+
+.err-stock{
+    color: red;
+    font-size: smaller;
+    position: relative;
+}

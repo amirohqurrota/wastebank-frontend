@@ -1,11 +1,11 @@
-import {createSLice} from '@reduxjs/toolkit'
+import {createSlice} from '@reduxjs/toolkit'
 
 
 
-const [getDataLogin, {loading :loadDataUser, error:errDataUser, data: dataUser}]=useLazyQuery(LOGIN_DATA)
+// const [getDataLogin, {loading :loadDataUser, error:errDataUser, data: dataUser}]=useLazyQuery(LOGIN_DATA)
 
 export const LoginUser = createSlice({
-	name: "auth",
+	name: "dataUserLogin",
 	initialState: {
 		userId: -1,
 		lastName: "",

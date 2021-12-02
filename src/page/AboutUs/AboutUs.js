@@ -6,10 +6,12 @@ import image1 from './image/ivan-bandura-Ac97OqAWDvg-unsplash.jpg'
 import { matchRoutes } from 'react-router'
 import Maps from '../../component/Maps/Maps'
 import Footer from '../../component/footer/Footer'
+import Nav from '../../component/Navbar/Nav'
 
 export default function AboutUs() {
     return (
         <>
+            <Nav/>
             <Carousel/>
             <Why/>
             <div className='col-10 ms-auto me-auto mt-0 pt-0 d-flex'>

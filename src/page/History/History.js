@@ -1,15 +1,17 @@
 import {React, useState, useEffect} from 'react'
+import {useSelector } from "react-redux";
+import {gql, useLazyQuery} from "@apollo/client";
 import './History.css'
 import HistoryDetail from '../../component/HistoryDetail/HistoryDetail'
 import Footer from '../../component/footer/Footer'
 import Nav from '../../component/Navbar/Nav'
-import {gql, useMutation, useQuery,useLazyQuery, useSubscription} from "@apollo/client";
 import Loader from "react-loader-spinner";
 import HistoryDetailOne from '../../component/HistoryDetail/HistoryDetailOne'
+import Loading from '../../component/loading/Loading';
 
 const TRANSACTION_HIST_USER=gql`
-query transactionHistById {
-    transaction(where: {id_user: {_eq: 1}}) {
+query transactionHistById($idUser: Int!) {
+    transaction(where: {id_user: {_eq: $idUser}}) {
       nominal
       date
       desc
@@ -22,13 +24,9 @@ query transactionHistById {
   `;
 
 const GET_SALDO=gql`
-query getSaldo($idUser: Int = 1) {
-    transaction_aggregate(where: {id_user: {_eq: $idUser}, transaction_type: {id: {_eq: 1}}}) {
-      aggregate {
-        sum {
-          nominal
-        }
-      }
+query MyQuery($idUser: Int!) {
+    user(where: {id: {_eq: $idUser}}) {
+      total_saldo
     }
   }
 `
@@ -74,8 +72,8 @@ query MyQuery8($idUser: Int = 10, $dateFrom: date = "", $dateTo: date = "") {
   }`
 
 export default function History() {
-    const {loading, error,data: dataHistory}=useQuery(TRANSACTION_HIST_USER);
-    const {loading: loadingsaldo, error: errorsaldo,data : saldo}=useQuery(GET_SALDO);
+    const [getDataHistory, {loading, error,data: dataHistory}]=useLazyQuery(TRANSACTION_HIST_USER);
+    const [getSaldo,{loading: loadingsaldo, error: errorsaldo,data : saldo}]=useLazyQuery(GET_SALDO);
     const [getHistoryById, {loading : loadingSearch, error:errorSearch, data:dataSearchById}]=useLazyQuery(SEARCH)
     const [filterTypeHistory, {loading : loadingFilterType, error:errorFilterType, data:dataFilterType}]=useLazyQuery(FILTER_TYPE)
     const [filterDateHistory, {loading : loadingFilterDate, error:errorFilterDate, data:dataFilterDate}]=useLazyQuery(FILTER_DATE)
@@ -83,26 +81,36 @@ export default function History() {
     const [transactionByType, setTransactionByType]=useState("default")
     const [transactionByDate, setTransactionByDate]=useState("default")
     const [transactionFiltered, setTransactionFiltered]=useState()
-
+    const idUser = useSelector((state) => state.dataUserLogin.userId)
 
     useEffect(() => {
         setTransactionById(dataSearchById?.transaction[0])
         setTransactionByDate(dataFilterDate?.transaction)
         setTransactionByType(dataFilterType?.transaction)
-
+        getDataHistory({
+            variables:{
+                idUser
+            }
+        })
+        getSaldo({
+            variables:{
+                idUser
+            }
+        })
         if(transactionByDate && transactionByType){
             console.log("cond3")
             setTransactionFiltered(dataFilterType?.transaction.filter((x => dataFilterDate?.transaction.includes(x))))
+            console.log(transactionFiltered)
         }else if(transactionByDate && !transactionByType){
             console.log("cond2")
-            setTransactionFiltered(dataFilterDate)
+            setTransactionFiltered(dataFilterDate?.transaction)
         }else if(!transactionByDate && transactionByType){
             console.log("cond1")
-            setTransactionFiltered(dataFilterType)
+            setTransactionFiltered(dataFilterType?.transaction)
         }
 
         
-    }, [dataSearchById, dataFilterDate, dataFilterType])
+    }, [dataSearchById, dataFilterDate, dataFilterType, transactionByDate, transactionByType, dataHistory, saldo, getDataHistory, idUser, getSaldo])
 
     const emptyFilter={
         filterType:"",
@@ -114,10 +122,10 @@ export default function History() {
         searchDate:"",
     }
 
-    let [search, setSearch] = useState(emptySearch)
-    let [filter, setFilter] = useState(emptyFilter)
-    let [errID, setErrID]=useState("") 
-    let [errDate, setErrDate]=useState("")
+    const [search, setSearch] = useState(emptySearch)
+    const [filter, setFilter] = useState(emptyFilter)
+    const [errID, setErrID]=useState("") 
+    const [errDate, setErrDate]=useState("")
     const listErrorSearch=[errID,errDate]
     const regex = /^[0-9\b]+$/;
     const [filterStatus,setFilterStatus] = useState(false)
@@ -164,15 +172,15 @@ export default function History() {
         if(filter.filterType && (!filter.filterTimeFrom || !filter.filterTimeTo) ){
             filterTypeHistory({
                 variables:{
-                    idUser:1,
+                    idUser,
                     idType: filter.filterType
                 }
             })
-            console.log("cond 1")
+
         } else if(filter.filterTimeFrom && filter.filterTimeTo && !filter.filterType){
             filterDateHistory({
                 variables:{
-                    idUser:1,
+                    idUser,
                     dateFrom: filter.filterTimeFrom,
                     dateTo: filter.filterTimeTo
                 }
@@ -180,14 +188,14 @@ export default function History() {
         } else if(filter.filterTimeFrom && filter.filterTimeTo && filter.filterType){
             filterDateHistory({
                 variables:{
-                    idUser:1,
+                    idUser,
                     dateFrom: filter.filterTimeFrom,
                     dateTo: filter.filterTimeTo
                 }
             })
             filterTypeHistory({
                 variables:{
-                    idUser:1,
+                    idUser ,
                     idType: filter.filterType
                 }
             })
@@ -196,7 +204,7 @@ export default function History() {
         
             
         
-        console.log(transactionFiltered, "fetching filter", filter?.filterType, "id type" )
+        console.log(transactionFiltered, " filter type", filter?.filterType, "filter date", filter.filterTimeTo )
         console.log(dataFilterDate?.transaction )
     }
 
@@ -207,25 +215,13 @@ export default function History() {
     return (
         <div className='d-flex flex-column'>
             <Nav/>
-            {loading?
-                    <div className="pop-up-loading px-3 d-flex flex-column justify-content-center align-items-center">
-                    <Loader type="Circles" color="#314F37" height={80} width={80}/>
-                    <p className="fs-3 fw-light text-capitalize"> please wait...</p>
-                </div> : null}
-            
-            {loadingFilterType||loadingFilterDate?
-                <div className="pop-up-loading px-3 d-flex flex-column justify-content-center align-items-center">
-                <Loader type="Circles" color="#314F37" height={80} width={80}/>
-                <p className="fs-3 fw-light text-capitalize"> filter working...</p>
-            </div> : null}
-            {/* <p>{JSON.stringify(dataHistory)}</p> */}
-            {/* <p>{JSON.stringify(saldo?.transaction_aggregate?.aggregate?.sum?.nominal)}</p> */}
+            {loading||loadingFilterDate||loadingSearch||loadingsaldo||loadingFilterType||loadingFilterDate?<Loading/>: null}
             <div className='ms-0 back-color-green col-6 d-flex p-5 container-wallet flex-row justify-content-center align-items-center mb-5 shadow'>
                 <div className='mt-4 mb-4'>
                     <p className='fs-4'>active balance</p>
                     <p className='fs-6'>ID User : 1234567894k4</p>
                 </div>
-                <p className='fw-bold fs-3 ms-5'>Rp {saldo?.transaction_aggregate?.aggregate?.sum?.nominal}</p>
+                <p className='fw-bold fs-3 ms-5'>Rp {saldo?.user[0]?.total_saldo}</p>
                 {/* <p className='fw-bold fs-3 ms-5'>Rp {saldo.transaction_aggregate.aggregate.sum.nominal}</p> */}
             </div>
             <div className='d-flex col-11 justify-content-evenly ms-auto me-auto'>
@@ -304,7 +300,7 @@ export default function History() {
             <div className={!filterStatus?'button-none':'col-10 d-flex flex-column align-self-center'}>
                 <button className='button-history back-color-green px-3 me-5 align-self-end reset-filter' onClick={resetClick}>reset filter</button>
             </div>
-            <HistoryDetail data={filterStatus?(transactionFiltered?.transaction):(dataHistory?.transaction)} />
+            <HistoryDetail data={filterStatus?(transactionFiltered):(dataHistory?.transaction)} />
             <Footer/>
         </div>
     )

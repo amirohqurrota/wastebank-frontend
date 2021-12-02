@@ -15,21 +15,25 @@ import History from './page/History/History';
 import Input from './page/AdminInput/Input';
 import RecapData from './page/AdminRecapData/RecapData';
 import LoginUser from './page/login/loginUser';
+import AdminWasteStock from './page/AdminWasteStock/AdminWasteStock';
 
 
 function App() {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-      <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path="/about" element={<AboutUs />}/>
-          <Route path="/history" element={<History />}/>
-          {/* <Route path="/finance" element={<Home />}/> */}
-          <Route path="/admin/input" element={<Input />}/>
-          <Route path="/admin/recap" element={<RecapData />}/>
-          <Route path="/login" element={<LoginUser />}/>
-      </Routes>
+        <BrowserRouter>
+          <Routes>
+              <Route path="/" element={<Home />}/>
+              <Route path="/about" element={<AboutUs />}/>
+              <Route path="/history" element={<History />}/>
+              {/* <Route path="/finance" element={<Home />}/> */}
+              <Route path="/admin/input" element={<Input />}/>
+              <Route path="/admin/transaction" element={<RecapData />}/>
+              <Route path="/admin/waste" element={<AdminWasteStock />}/>
+              <Route path="/login" element={<LoginUser />}/>
+          </Routes>
+      </BrowserRouter>
 
       </PersistGate>
     </Provider>

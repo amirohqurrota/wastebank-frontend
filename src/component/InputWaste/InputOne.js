@@ -1,5 +1,5 @@
 import {React, useState, useEffect} from 'react'
-import {gql, useMutation, useQuery,useLazyQuery, useSubscription} from "@apollo/client";
+import {gql, useQuery} from "@apollo/client";
 
 const DATA_WASTE=gql`
 query nameWaste {
@@ -9,16 +9,31 @@ query nameWaste {
       purchase_price
     }
   }`
+
+
 export default function InputOne(props) {
+    const {setListWaste,concatWaste,setConcatWaste,setTotal}=props
     const {loading, error,data:dataWaste}=useQuery(DATA_WASTE)
+    if (loading){
+        console.log("loading queries")
+    }
+    if(error){
+        console.log("error queries")
+    }
+
+    const emptyWaste={
+        id:-1,
+        idWaste:-1,
+        weightWaste:"",
+        typeWaste:"",
+        totalMoney:0   
+    }
 
     const regex = /^[0-9\b]+$/;
     const [errWeight, setErrWeight]=useState("")
-    const emptyWaste={
-        weightWaste:"",
-        typeWaste:"",
-    }
     const [inputWaste, setInputWaste]=useState(emptyWaste)
+    const [price,setPrice]=useState()
+    const totalTemp=parseInt(price)*parseInt(inputWaste?.weightWaste)
     const handleInput=e=>{
         const target = e.target;
         const name= e.target.name;
@@ -27,40 +42,46 @@ export default function InputOne(props) {
             if(regex.test(value) || !value){
                 setErrWeight("")
             }else{
-                setErrWeight("weight must be number only")
+                setErrWeight("weight must be number only (in kilograms)")
             }
         }
         setInputWaste({
             ...inputWaste,
             [name]: value
         })
-        console.log(value, "value")
-        console.log(name, "name")
     }
 
-    const [price,setPrice]=useState()
-    const totalTemp=parseInt(price)*parseInt(inputWaste?.weightWaste)
     
-    // const totalTemp=5000
+    
     useEffect(()=>{
         if (price&&inputWaste){
-            props.setTotal(price*inputWaste?.weightWaste)
+            setTotal(price*inputWaste?.weightWaste , inputWaste?.weightWaste )
         }
-        
-    },[totalTemp])
+        // if(dataWaste){
+        //     console.log("useeffet ", dataWaste?.waste)
+        //     for (const element of dataWaste?.waste) {
+        //         setWasteObject({...wasteObject,
+        //             [element.name]:element.purchase_price
+        //         }
+        //         )
+        //     }
+        // }
+    },[totalTemp,dataWaste])
 
     const handleAddWaste=()=>{
         const name=inputWaste?.typeWaste
-        dataWaste?.waste?.map((x)=>x.name===name?setPrice(x.purchase_price):x)
-        // setTotalTemp(parseInt(price)*parseInt(inputWaste?.weightWaste))
-        // props.setTotal(price*inputWaste?.weightWaste)
-        // props.setTotal(10000)
+        dataWaste?.waste?.map((x)=>x.name===name?setPrice(x.purchase_price):null)
+        // const listWaste=dataWaste?.waste?.map((x)=>({
+        //     value:x.purchase_price, text:x.name
+        // }))
+        // console.log(wasteObject)
+        setListWaste(listWaste=>[...listWaste,inputWaste])
+        const str=  " " + inputWaste.typeWaste + " " + inputWaste.weightWaste+"kg ;";
+        setConcatWaste(`${concatWaste}${str}`)
     }
 
     return (
         <div className='d-flex flex-row col-12 mt-5 '>
-            {/* <p>{JSON.stringify(dataWaste?.waste)}</p> */}
-            {/* <p>{price}</p> */}
             <div className='d-flex flex-row align-items-center'>
                 <p className='me-3'>Types of Waste :</p>
                 <select className='input-admin' name="typeWaste" value={inputWaste.typeWaste} onChange={handleInput}>

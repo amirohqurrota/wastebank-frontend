@@ -3,6 +3,7 @@ import "./login.css"
 import {gql, useMutation, useQuery,useLazyQuery, useSubscription} from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import {login} from '../../store/user'
 import Loader from "react-loader-spinner";
 import userData from '../../component/userData/userData';
 
@@ -23,7 +24,7 @@ export default function LoginUser() {
         username:"",
         password:"",
     }
-    const [login, setLogin] = useState(emptyLogin)
+    const [loginInput, setLoginInput] = useState(emptyLogin)
     const [errLogin, setErrLogin] = useState()
     const handleInput=e=>{
         const name= e.target.name;
@@ -36,8 +37,8 @@ export default function LoginUser() {
                 setErrLogin("")
             }
         }
-        setLogin({
-            ...login,
+        setLoginInput({
+            ...loginInput,
             [name]: value
         })
         
@@ -46,25 +47,25 @@ export default function LoginUser() {
     useEffect(()=>{
         if(data&&!loading){
             if(data?.user.length===0){
-                // setErrLogin("incorrect username or password")
+                setErrLogin("incorrect username or password")
             }else{
-                // setErrLogin("")
+                setErrLogin("")
                 const UsersData={
                     userId: data.user[0].id,
                     lastName: data.user[0].last_name,
                     firstName:data.user[0].first_name
                 }
                 dispatch(login(UsersData))
-                useNavigate('/')
+                navigate('/')
             }
         }
-    },[data,loading]);
+    },[data, dispatch, loading, navigate]);
 
     const submitLogin=()=>{
         getDataLogin({
             variables:{
-                username:login.username,
-                password:login.password
+                username:loginInput.username,
+                password:loginInput.password
             }
         })
         // console.log(search)

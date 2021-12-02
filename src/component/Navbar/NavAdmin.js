@@ -1,5 +1,6 @@
 import React from 'react'
 import './Nav.css'
+import { Link, Navigate } from "react-router-dom"
 
 export default function NavAdmin() {
     return (
@@ -12,13 +13,13 @@ export default function NavAdmin() {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-5 navbar-link">
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <Link to="/admin/input" class="nav-link" href="#">Input Deposit</Link>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Input Deposit</a>
+                    <Link to="/admin/waste" class="nav-link active" aria-current="page" href="#">Waste Data</Link>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Recap Data</a>
+                    <Link to="/admin/transaction" class="nav-link" href="#">Data Transaction</Link>
                     </li>
                 </ul>
                 </div>

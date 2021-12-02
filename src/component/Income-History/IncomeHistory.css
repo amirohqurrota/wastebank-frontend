@@ -29,15 +29,20 @@
     background-color: #EBF2EC;
     border-radius: 1rem;
 }
+.relative{
+    position:inherit;
+}
 .collapse-income{
-    position: absolute;
+    position:absolute;
     margin-top: -2rem;
     margin-left: 2rem;
+    z-index: +1;
 }
 
 .scroll-horizontal{
     overflow-x: scroll;
     scroll-behavior: smooth;
+    /* position: relative; */
 
 }
 
