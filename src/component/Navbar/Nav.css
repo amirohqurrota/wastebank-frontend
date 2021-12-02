@@ -6,8 +6,19 @@
     font-size: larger;
 }
 
+.nav-link:hover{
+    background-color: rgba(255, 255, 255, 0.322);
+    border-radius: 0.8rem;
+}
+
+.image-logo{
+    object-fit: cover;
+    max-height:3rem;
+    position: relative;
+}
+
 .navbar{
-    font-weight:500;
+    /* font-weight:500; */
     color: white;
     /* position:fixed;
     width: 100vw;
@@ -16,4 +27,8 @@
 
 .nav-link{
     color: white !important;
+}
+
+.navbar-user{
+    margin-right: 7rem;
 }

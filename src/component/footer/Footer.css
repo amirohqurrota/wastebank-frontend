@@ -1,6 +1,5 @@
 .footer-container{
     /* width: 100vw; */
-    color: white;
     margin-top: 8rem;
 }
 
@@ -36,22 +35,35 @@
     background-image: url('./image/facebook.png');
     background-repeat: no-repeat;
     background-origin: content-box;
+    background-size:cover;
+    
 }
 #logo-tw{
-    background-image: url('./image/facebook.png');
+    background-image: url('./image/twitter.png');
     background-repeat: no-repeat;
-    background-origin: content-box;
-    
+    background-origin: content-box;               
+    background-size:cover;
 }
+    
 #logo-yt{
-    background-image: url('./image/facebook.png');
+    background-image: url('./image/youtube.png');
     background-repeat: no-repeat;
     background-origin: content-box;
-    
+    background-size:cover;
 }
+    
 #logo-ig{
-    background-image: url('./image/facebook.png');
+    background-image: url('./image/instagram.png');
     background-repeat: no-repeat;
     background-origin: content-box;
+    background-size:cover;
+}
     
+
+.image-one{
+    max-width: 3rem;
+    max-height: 3.5rem;
+    width: auto;
+    height: auto;
+    object-fit: contain
 }

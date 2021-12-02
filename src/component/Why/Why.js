@@ -3,8 +3,7 @@ import WhyOne from './Why-one'
 import './Why.css'
 import Nav from '../Navbar/Nav'
 // import '../../materialIcons/repairing-service.png'
-import './image/string-bag-with-food-illustration-eco-net-shopping-bag-with-products-concept-for-zero-waste-plastic-free-vector-removebg-preview.png'
-
+import img from './image/age-group.png'
 const listWhy=[
     {
         image: './image/string-bag-with-food-illustration-eco-net-shopping-bag-with-products-concept-for-zero-waste-plastic-free-vector-removebg-preview.png',
@@ -17,7 +16,7 @@ const listWhy=[
         desc:"our simple act can make a big impact fot earth"
     },
     {
-        image: './image/string-bag-with-food-illustration-eco-net-shopping-bag-with-products-concept-for-zero-waste-plastic-free-vector-removebg-preview.png',
+        image: './image/age-group.png',
         title:"For Next Generation",
         desc:"it for our grand children and the next generation"
     },
@@ -45,6 +44,7 @@ export default function Why() {
             <div className='d-flex flex-wrap col-10 container-why bg-light'>
                 {listWhy.map((item)=><WhyOne image={item.image} title={item.title} desc={item.desc}/>)}
             </div>
+            {/* <img src={img} className='col-2' alt="kk"/> */}
         </div>
     )
 }

@@ -1,12 +1,13 @@
 import React from 'react'
 import './Nav.css'
 import { Link, Navigate } from "react-router-dom"
+import logo from "./logo.png"
 
 export default function NavAdmin() {
     return (
         <nav class="navbar navbar-expand-lg navbar-light back-color-green">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">WASTEBANK</a>
+                <img src={logo} className="img-fluid image-logo ms-4"/>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>

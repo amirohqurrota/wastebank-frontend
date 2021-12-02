@@ -55,7 +55,7 @@ input:focus, textarea:focus, select:focus{
     display: none;
 }
 
-.pop-up-search{
+.pop-up-search-history{
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);

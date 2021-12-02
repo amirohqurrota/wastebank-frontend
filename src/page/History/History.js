@@ -160,7 +160,7 @@ export default function History() {
             const idTrans=search.searchID
             getHistoryById({
             variables:{
-                idUser:1,
+                idUser,
                 idTrans:idTrans
             }
         })
@@ -232,10 +232,10 @@ export default function History() {
                             <label for>ID</label>
                             <input className='input-history' name='searchID' value={search.searchID} onChange={handleInput}></input>
                         </div>
-                        <div className='d-flex flex-column mt-2 div-input'>
+                        {/* <div className='d-flex flex-column mt-2 div-input'>
                             <label for>Date</label>
                             <input placeholder="yyyy-mm-dd" className='input-history' name='searchDate' value={search.searchDate} onChange={handleInput}></input>
-                        </div>
+                        </div> */}
                         {listErrorSearch.map((message)=>(<span className="errorMessage">{message} <br/></span>))}
                     </div>
                     <button className='back-color-green button-history align-self-end col-2' onClick={handleSubmitSearch}>search</button>
@@ -271,7 +271,7 @@ export default function History() {
                 </div>
             </div>
 
-            <div className={search.searchID && transactionById?'pop-up-search d-flex flex-column align-self-center':'pop-up-none'}>
+            <div className={search.searchID && transactionById?'pop-up-search-history d-flex flex-column align-self-center':'pop-up-none'}>
                 <div className='d-flex flex-column align-items-end justify-content-between col-9 ms-auto me-auto pt-2'>
                     <div>
                         <p className='fw-bold fs-5'>{transactionById?.date}</p>

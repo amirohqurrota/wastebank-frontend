@@ -1,23 +1,23 @@
 import React from 'react'
 import './Footer.css'
-import logo from './Free_Sample_By_Wix.jpg'
+import logo from './image/Picture5.png'
+import "./Footer.css"
 
 export default function Footer() {
     return (
         <div className=' d-flex justify-content-evenly back-color-green footer-container '>
             <div className='col-2 footer-left'>
                 <div>
-                    <image src={logo} alt="Logo"/> 
-                    <div className=''>kk</div>
+                    <img src={logo} alt="Logo" className="image-logo"/>
                     <p className='fs-6 fst-italic'>"Make Big Impact With Small Act"</p>
                 </div>
                 <div className='pt-3'>
                     <p className='fs-6'>follow us at :</p>
                     <div className='d-flex justify-content-evenly'>
-                        <a href='' className='w-1 bg-light container-logo' id='logo-yt'></a>
-                        <a href=''><div className='w-1 bg-light container-logo' id='logo-ig'></div></a>
-                        <a href=''><div className='w-1 bg-light container-logo' id='logo-tw'></div></a>
-                        <a href=''><div className='w-1 bg-light container-logo' id='logo-fb'></div></a>
+                        <a href='' className='w-1  container-logo' id='logo-yt'></a>
+                        <a href=''><div className='w-1  container-logo' id='logo-ig'></div></a>
+                        <a href=''><div className='w-1  container-logo' id='logo-tw'></div></a>
+                        <a href=''><div className='w-1  container-logo' id='logo-fb'></div></a>
                     </div>
                 </div>
             </div>
