@@ -2,8 +2,21 @@
     margin: 7rem;
 }
 
+.button-search{
+    background-color: #314F37 !important;
+    color:white !important;
+    border-radius: 0rem 0.8rem 0.8rem 0 !important;
+    border: none;
+}
+
+.searchByID{
+    border-radius: 0.8rem 0rem 0rem 0.8rem !important;
+    border: none;
+}
+
 .input-search{
-    width:30%
+    width:35%;
+    position:relative ;
 }
 
 .select-filter{

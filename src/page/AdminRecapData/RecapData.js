@@ -78,8 +78,8 @@ export default function RecapData() {
     }, [dataFilteredById])
 
     useEffect(() => {
-        setFilteredData(dataFilteredByType?.transaction)
-    }, [dataFilteredByType])
+        setSearchData(dataSearchById?.transaction[0])
+    }, [dataSearchById])
     const [idUser,setIdUser]=useState("")
     const [idType,setIdType]=useState()
     const [filterById, setFilterById]=useState(true)
@@ -132,6 +132,7 @@ export default function RecapData() {
     }
     const handleClose=()=>{
         setIdTransaction("")
+        setSearchData("")
     }
 
     const handleSearchInput=(e)=>{
@@ -158,10 +159,10 @@ export default function RecapData() {
             <NavAdmin/>
             {loading||loadFilterType||loadFilterId||loadingSearch?<Loading/> : null}
             <div className='d-flex flex-column recap-container'>
-                <div class="input-group mb-3 input-search align-self-end">
-                    <input type="text" class="form-control" placeholder="Seacrh By Transaction ID" aria-label="Seacrh By Transaction ID" 
-                    aria-describedby="button-addon2"  onChange={handleSearchInput} value={idTransaction} />
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2" onClick={search} >Search</button>
+                <div class="input-group mb-3 input-search align-self-end mb-5">
+                    <input type="text" className="form-control  searchByID" placeholder="Seacrh By Transaction ID" aria-label="Seacrh By Transaction ID" 
+                    aria-describedby="button-addon2" onChange={handleSearchInput} value={idTransaction} />
+                    <button class="btn btn-outline-secondary button-search" type="button" id="button-addon2" onClick={search} >Search</button>
                 </div>
                 <div className='col-12'>
                     <div className='filter col-8 d-flex '>
@@ -186,27 +187,27 @@ export default function RecapData() {
                     <button className='button-recap py-1 px-4 back-color-green'>see more...</button>
                 </div>
             </div>
-            <div className={idTransaction && dataSearchById?'pop-up-search-history d-flex flex-column align-self-center':'pop-up-none'}>
-                <div className='d-flex flex-column align-items-end justify-content-between col-9 ms-auto me-auto pt-2'>
+            <div className={!loadingSearch && searchData?'pop-up-search-history d-flex flex-column align-self-center':'pop-up-none'}>
+                <div className='d-flex flex-column align-items-center justify-content-between col-9 ms-auto me-auto pt-2'>
                     <div>
                         <p className='fw-bold fs-5'>{dataSearchById?.transaction?.date}</p>
                         {/* <p>{JSON.stringify(dataSearchById?.transaction)}</p> */}
                         <tr>
                             <td>ID</td>
-                            <td className='ps-1'>:</td>
-                            <td>{dataSearchById?.transaction?.id}</td>
+                            <td className='ps-5'>:</td>
+                            <td>{dataSearchById?.transaction[0]?.id}</td>
                         </tr>
                         <tr>
                             <td>Type</td>
-                            <td className='ps-1 pe-1'>:</td>
-                            <td>{dataSearchById?.transaction?.transaction_type?.name}</td>
+                            <td className='ps-5 pe-1'>:</td>
+                            <td>{dataSearchById?.transaction[0]?.transaction_type?.name}</td>
                         </tr>
                         <tr>
                             <td>Description</td>
-                            <td className='ps-1 pe-1'>:</td>
-                            <td>{dataSearchById?.transaction?.desc}</td>
+                            <td className='ps-5 pe-1'>:</td>
+                            <td>{dataSearchById?.transaction[0]?.desc}</td>
                         </tr>
-                        <p className='fw-bold fs-5 align-self-end'> Rp {dataSearchById?.transaction?.nominal}</p>
+                        <p className='fw-bold fs-5 align-self-end'> Rp {dataSearchById?.transaction[0]?.nominal}</p>
                     </div>
                     <button className='justify-self-center button-close' onClick={handleClose}>close</button>
                 
