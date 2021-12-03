@@ -1,0 +1,42 @@
+.recap-container{
+    margin: 7rem;
+}
+
+.button-search{
+    background-color: #314F37 !important;
+    color:white !important;
+    border-radius: 0rem 0.8rem 0.8rem 0 !important;
+    border: none;
+}
+
+.searchByID{
+    border-radius: 0.8rem 0rem 0rem 0.8rem !important;
+    border: none;
+}
+
+.input-search{
+    width:35%;
+    position:relative ;
+}
+
+.select-filter{
+    outline: none;
+}
+
+.button-recap{
+    border: none;
+    border-radius: 1rem;
+}
+
+.button-recap-filter{
+    border: none;
+    border-radius: 1.3rem;
+}
+
+.reset:hover{
+    background-color: rgb(212, 65, 65);
+}
+
+.filter-submit:hover{
+    background-color: rgb(161, 160, 160);
+}

@@ -1,0 +1,34 @@
+.nav-item>a{
+    margin-left: 3rem;
+}
+
+.navbar-link{
+    font-size: larger;
+}
+
+.nav-link:hover{
+    background-color: rgba(255, 255, 255, 0.322);
+    border-radius: 0.8rem;
+}
+
+.image-logo{
+    object-fit: cover;
+    max-height:3rem;
+    position: relative;
+}
+
+.navbar{
+    /* font-weight:500; */
+    color: white;
+    /* position:fixed;
+    width: 100vw;
+    margin-top:0; */
+}
+
+.nav-link{
+    color: white !important;
+}
+
+.navbar-user{
+    margin-right: 7rem;
+}

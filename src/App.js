@@ -1,24 +1,46 @@
-import logo from './logo.svg';
+
 import './App.css';
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+
+import { Provider } from "react-redux"
+import { PersistGate } from "redux-persist/integration/react"
+import {store, persistor} from './store/Store'
+import Home from './page/Home/Home';
+import AboutUs from './page/AboutUs/AboutUs';
+import History from './page/History/History';
+import Input from './page/AdminInput/Input';
+import RecapData from './page/AdminRecapData/RecapData';
+import LoginUser from './page/login/loginUser';
+import AdminWasteStock from './page/AdminWasteStock/AdminWasteStock';
+import NotFound from './page/NotFound/NotFound';
+import NotFoundAdmin from './page/NotFound/NotFoundAdmin';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <BrowserRouter>
+          <Routes>
+              <Route path="/" exact="true" element={<Home />}/>
+              <Route path="/about" element={<AboutUs />}/>
+              <Route path="/history" element={<History />}/>
+              {/* <Route path="/finance" element={<Home />}/> */}
+              <Route path="/admin/input" element={<Input />}/>
+              <Route path="/admin/transaction" element={<RecapData />}/>
+              <Route path="/admin/waste" element={<AdminWasteStock />}/>
+              <Route path="/login" element={<LoginUser />}/>
+              <Route path="/admin/*" element={<NotFoundAdmin />}/>
+              <Route path="*" element={<NotFound />}/>
+          </Routes>
+      </BrowserRouter>
+
+      </PersistGate>
+    </Provider>
   );
 }
 

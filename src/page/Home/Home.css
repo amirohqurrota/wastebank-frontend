@@ -1,0 +1,33 @@
+.image-banner{
+    background-image: url('banner.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 600px;
+}
+
+.image-banner>p{
+    display: none;
+}
+
+.image-container{
+    height: 100%;
+}
+.mt-n1 {
+    margin-top: -1rem !important;
+  }
+
+.container-banner{
+    margin-top: 5rem;
+    width: 100vw;
+    padding-left: 4rem;
+}
+
+.recap-saldo{
+    border-radius: 0.8rem;
+    padding: 1.5rem;
+}
+
+.see-cash-inout{
+    font-size: smaller;
+}

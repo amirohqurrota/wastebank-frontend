@@ -1,0 +1,51 @@
+.history-one{
+    border-radius: 1rem;
+}
+
+.square{
+    width: 180px;
+    min-height: 180px;
+}
+
+.button-detail{
+    border: none !important;
+    color: white;
+    border-radius: 1em;
+    font-size: smaller;
+
+}
+
+.appear-nonActive{
+    display: none;
+}
+
+.containerDetailOne{
+    border-bottom: black;
+}
+
+.containerDetail{
+    margin-top: 1rem;
+    width: fit-content;
+    background-color: #EBF2EC;
+    border-radius: 1rem;
+}
+.relative{
+    position:inherit;
+}
+.collapse-income{
+    position:absolute;
+    margin-top: -2rem;
+    margin-left: 2rem;
+    z-index: +1;
+}
+
+.scroll-horizontal{
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    /* position: relative; */
+
+}
+
+.scroll-horizontal::-webkit-scrollbar {
+    display: none;
+}

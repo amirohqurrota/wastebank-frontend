@@ -1,0 +1,69 @@
+.image-left{
+    background-image: url('./image/pedro-aguilar-1PCJkDXyJjY-unsplash.jpg');
+    background-size: cover;
+    background-position: top;
+    height: 100vh;
+}
+
+.container-input{
+    height: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.input{
+    border: none;
+    border-radius: 0.4rem;
+}
+
+.submit-login:hover{
+    background-color: rgb(216, 216, 216);
+    color: #314F37;
+}
+
+.input-area-login{
+    background-color: #9FAC9A;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    border-radius: 2rem;
+}
+
+.error-validation{
+    font-size: smaller;
+    color: red;
+    position: fixed;
+}
+
+.pop-up-login{
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    border-radius: 1rem;
+    width: 40%;
+    height: 40%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    justify-self: center;
+    background-color: #709277;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+}
+
+.pop-up-loading{
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    border-radius: 1rem;
+    width: 40%;
+    height: 40%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    justify-self: center;
+    background-color: #709277;
+    color: black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+}

@@ -1,0 +1,7 @@
+.container-pop-up{
+    height:fit-content !important ;
+}
+
+.delete-button:hover{
+    background-color:rgb(172, 27, 27);
+}

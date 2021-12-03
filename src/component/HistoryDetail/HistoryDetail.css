@@ -1,0 +1,15 @@
+.container-detail-one{
+    border-bottom-style: solid;
+    border-width: thin;
+}
+
+
+.button-close{
+    border-radius: 1rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    border: none;
+}
+.pop-up-none{
+    display: none;
+}

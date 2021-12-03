@@ -1,0 +1,71 @@
+.container-wallet{
+    border-radius: 0px;
+    border-radius: 0px 1.5rem 1.5rem 0rem;
+    color: white;
+    height: 50vh;
+    margin-top: 3rem;
+}
+
+.container-filter{
+    height: 15rem;
+    border-radius: 1rem;
+    height: fit-content;
+}
+
+.div-input{
+    border-bottom:0.1rem solid black;
+}
+
+.input-history{
+    border: none;
+    -webkit-appearance: none;
+}
+
+.input-history-option{
+    border: none;
+}
+
+.disabled-option{
+    color: grey !important;
+    font-size: smaller;
+}
+
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}
+
+.button-history{
+    border: none;
+    border-radius: 1rem;
+    padding-right: 0.4rem;
+    padding-left: 0.4rem;
+    margin-top: 1.5rem;
+}
+.errorMessage{
+    color: red;
+    font-size: smaller;
+}
+
+.reset-filter{
+    margin-bottom: -3rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
+.button-none{
+    display: none;
+}
+
+.pop-up-search-history{
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    border-radius: 1rem;
+    width: 50%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    justify-self: center;
+    background-color: #709277;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+}

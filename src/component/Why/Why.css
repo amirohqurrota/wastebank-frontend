@@ -1,0 +1,22 @@
+.why{
+    justify-content: center;
+}
+
+.image{
+    background-image: url(./image/string-bag-with-food-illustration-eco-net-shopping-bag-with-products-concept-for-zero-waste-plastic-free-vector-removebg-preview.png);
+    background-position: center;
+    background-size:cover;
+    
+}
+
+.container-why{
+    border-radius: 1rem;
+}
+
+.image-one{
+    max-width: 3rem;
+    max-height: 3.5rem;
+    width: auto;
+    height: auto;
+    object-fit: contain
+}

@@ -1,0 +1,69 @@
+.footer-container{
+    /* width: 100vw; */
+    margin-top: 8rem;
+}
+
+.footer-left{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.footer-left-brand{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+}
+
+.footer-left-company{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+}
+
+.footer-left-download{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+}
+
+.container-logo{
+    width:2rem;
+    height: 2rem;
+}
+
+#logo-fb{
+    background-image: url('./image/facebook.png');
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-size:cover;
+    
+}
+#logo-tw{
+    background-image: url('./image/twitter.png');
+    background-repeat: no-repeat;
+    background-origin: content-box;               
+    background-size:cover;
+}
+    
+#logo-yt{
+    background-image: url('./image/youtube.png');
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-size:cover;
+}
+    
+#logo-ig{
+    background-image: url('./image/instagram.png');
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-size:cover;
+}
+    
+
+.image-one{
+    max-width: 3rem;
+    max-height: 3.5rem;
+    width: auto;
+    height: auto;
+    object-fit: contain
+}

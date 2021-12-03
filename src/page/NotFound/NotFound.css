@@ -1,0 +1,27 @@
+.container-notFound{
+    height:80%;
+    width:80vw;
+    background-color:#709277;
+    border-radius:2rem;
+}
+
+.container-ex{
+    height:90vh;
+    width:100%;
+}
+
+.bad-request{
+    font-size:10rem;
+    font-weight:bold
+}
+
+.button-back{
+    border:none;
+    border-radius:1rem;
+}
+
+.button-back:hover{
+    background-color:#314F37;
+    border-radius:1rem;
+    color:white
+}
