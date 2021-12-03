@@ -8,7 +8,7 @@ import Maps from '../../component/Maps/Maps'
 import Footer from '../../component/footer/Footer'
 import {gql, useMutation, useQuery,useLazyQuery, useSubscription} from "@apollo/client";
 import Loader from "react-loader-spinner";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Loading from '../../component/loading/Loading';
 
 const GET_DATA_USER=gql`
@@ -47,6 +47,7 @@ query MyQuery($idUser: Int!){
   
 
 export default function Home() {
+    const navigate = useNavigate();
     const [getWeight,{loading : loadWeight, error:errWeight,data:dataWeight}]=useLazyQuery(GET_WEIGHT);
     const [getDataUser, {loading:loadDataUser, error:errDataUser,data:dataUser}]=useLazyQuery(GET_DATA_USER);
     const [getDataTransaction, {loading: loadDataTransaction, error:errDataTransaction,data:dataTransaction}]=useLazyQuery(TRANSACTION_HIST_USER);
@@ -82,7 +83,7 @@ export default function Home() {
 
 
     return (
-        <>
+        <>  {(dataUser&&!loadDataUser)?navigate("/login"):null}
             <Nav/>
                 {loadWeight||loadDataTransaction||loadDataUser?<Loading/> : null}
                 <div className="row container-banner">
