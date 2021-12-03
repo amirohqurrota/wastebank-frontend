@@ -5,6 +5,8 @@ import './Input.css'
 import {gql, useMutation, useQuery,useLazyQuery, useSubscription} from "@apollo/client";
 import InputWaste from '../../component/InputWaste/InputWaste';
 import UserData from '../../component/userData/userData';
+import PopUp from '../../component/PopUp/PopUp';
+import Loading from '../../component/loading/Loading';
 
 
 const GET_DATA_USER=gql`
@@ -98,6 +100,8 @@ export default function Input() {
     const [totalWeight, setTotalWeight]=useState(0)
     const regex = /^[0-9\b]+$/;
     const [errID, setErrID]=useState("")
+    const [popUpBool, setPopUpBool]=useState(false)
+    
 
     const handleInput=e=>{
         const value=e.target.value;
@@ -153,16 +157,14 @@ export default function Input() {
                 })
                 // console.log("item = ",item.weightWaste)
             )
-        // listWaste.map(
-        //     (item)=> insertWasteDeposit({
-        //         variables:{
-        //             total_money: total,
-        //             $total_weight: item.weightWaste,
-        //             $id_transaction: transactionId,
-        //         }
-        //     })
-        //     )
+        setPopUpBool(true)
         console.log("total weight :", totalWeight)
+        setIdUser("")
+        setListWaste([])
+    }
+
+    const closeHandle=()=>{
+        setPopUpBool(false)
     }
 
     
@@ -175,6 +177,7 @@ export default function Input() {
         <>
             <NavAdmin/>
             {/* <p>{JSON.stringify(dataUser?.user[0])}</p> */}
+            {loading||loadUpdateTransaction||loadUpdateTransaction||loadUpdateUser? <Loading/> : null}
             <div className='d-flex flex-column align-items-center input-container'>
                 <h2>Input New Deposit</h2>
                 <div className='d-flex flex-column col-9 input-area'>
@@ -197,8 +200,8 @@ export default function Input() {
                             <p className='ms-2'>Rp {total?total:"loading.."}</p>
                         </div>
                         <button className='ms-4 button-input-proceed back-color-green px-3 py-1' onClick={handleSubmit}>Proceed</button>
-                        
                     </div>
+                    {popUpBool&&!loadUpdateTransaction&&!loadUpdateUser&&!loadUpdateWaste?<PopUp message1="succeed to insert data transaction" functionDisplay={closeHandle}/>:null}
                 </div>
             </div>
             <Footer/>
